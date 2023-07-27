@@ -6,10 +6,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\VenueController;
 use Egulias\EmailValidator\Parser\Comment;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\VenueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,5 +65,13 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/venues/{id}', [VenueController::class, 'show']);
     Route::put('/venues/{id}', [VenueController::class, 'update']);
     Route::delete('/venues/{id}',  [VenueController::class,'destroy']);
+
+    // Events
+    Route::get('/events', [EventController::class, 'index']);
+    Route::post('/events', [EventController::class, 'store']);
+    Route::get('/events/{id}', [EventController::class, 'show']);
+    Route::put('/events/{id}', [EventController::class, 'update']);
+    Route::delete('/events/{id}',  [EventController::class,'destroy']);
 });
 // Route::get('/products', [ProductController::class, 'index']);
+Route::get('/events', [EventController::class, 'index']);
