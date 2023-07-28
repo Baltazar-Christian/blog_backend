@@ -5,9 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
+
+    public function redirectToFacebook()
+{
+    return Socialite::driver('facebook')->redirect();
+}
+
+public function handleFacebookCallback()
+{
+    $user = Socialite::driver('facebook')->user();
+    // Handle user data and authentication here
+}
     //Register user
     public function register(Request $request)
     {
